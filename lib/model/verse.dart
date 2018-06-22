@@ -1,15 +1,17 @@
 import 'package:flutter/foundation.dart';
 
 class Verse {
-  const Verse({
-    @required this.bookId,
-    @required this.bookName,
-    @required this.bookOrder,
-    @required this.chapterId,
-    @required this.chapterTitle,
-    @required this.verseId,
-    @required this.verseText,
-  })  : assert(bookId != null),
+  const Verse(
+      {@required this.bookId,
+      @required this.bookName,
+      @required this.bookOrder,
+      @required this.chapterId,
+      @required this.chapterTitle,
+      @required this.verseId,
+      @required this.verseText,
+      this.paragraphNumber,
+      this.special})
+      : assert(bookId != null),
         assert(bookName != null),
         assert(bookOrder != null),
         assert(chapterId != null),
@@ -25,6 +27,7 @@ class Verse {
   final String verseText;
   final String verseId;
   final int paragraphNumber;
+  final bool special;
 
   factory Verse.fromJson(Map<String, dynamic> json) {
     return new Verse(

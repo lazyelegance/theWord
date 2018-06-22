@@ -1,7 +1,7 @@
 import '../model/verse.dart';
 
 List<Verse> getVerses(String bookName, String chapterId) {
-  const sampleVerse = <Verse>[
+  const sampleVerses = <Verse>[
     Verse(
       bookName: "Ezra",
       bookId: "Ezra",
@@ -211,6 +211,7 @@ List<Verse> getVerses(String bookName, String chapterId) {
       verseId: "21",
       verseText:
           "And I, even I Artaxerxes the king, do make a decree to all the treasurers which are beyond the river, that whatsoever Ezra the priest, the scribe of the law of the God of heaven, shall require of you, it be done speedily, \n\t\t\t",
+      special: true,
     ),
     Verse(
       bookName: "Ezra",
@@ -284,7 +285,7 @@ List<Verse> getVerses(String bookName, String chapterId) {
     )
   ];
 
-  return sampleVerse
+  return sampleVerses
       .where(
           (verse) => verse.bookName == bookName && verse.chapterId == chapterId)
       .toList();

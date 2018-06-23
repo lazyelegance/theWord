@@ -136,15 +136,15 @@ class _FrontLayer extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.only(topLeft: Radius.circular(20.0)),
       ),
-      child: Column(
+      child: Row(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           GestureDetector(
             behavior: HitTestBehavior.opaque,
             onTap: onTap,
             child: Container(
-              color: kSurfaceWhite,
-              height: 40.0,
+              color: kSurfaceDark,
+              width: 48.0,
               alignment: AlignmentDirectional.centerStart,
             ),
           ),

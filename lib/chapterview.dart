@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'model/chapter.dart';
 import 'model/verse.dart';
 import 'service/dbt.dart';
+import 'colors.dart';
 
 class ChapterView extends StatelessWidget {
   final String bookId;
@@ -17,14 +18,18 @@ class ChapterView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("object");
+    print(chapterId);
+
     return new Center(
       child: new FutureBuilder<Chapter>(
         future: fetchChapter(bookId, damId, chapterId),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return Container(
+              color: kSurfaceWhite,
               child: ListView(
-                padding: EdgeInsets.all(8.0),
+                padding: EdgeInsets.only(top: 20.0),
                 children: _buildListItems(snapshot.data.verses),
               ),
             );

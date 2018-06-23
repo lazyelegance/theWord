@@ -36,13 +36,23 @@ class TheWordAppState extends State<TheWordApp> {
       bookOrder: 15,
       numberOfChapters: 10);
 
-  String _currentChapter = "7";
+  int _currentChapter = 7;
 
   void _onBookTap(Book book) {
     setState(() {
       _currentBook = book;
-      _currentChapter = book.getRandomChapter();
+      _currentChapter = 1;
     });
+  }
+
+  void _goToNextChapter() {
+    var nextChapterExists = _currentBook.isValidChapter(_currentChapter + 1);
+
+    if (nextChapterExists) {
+      setState(() {
+        _currentChapter = _currentChapter + 1;
+      });
+    }
   }
 
   @override
@@ -52,11 +62,12 @@ class TheWordAppState extends State<TheWordApp> {
       title: 'The Word',
       home: Backdrop(
         currentBook: _currentBook,
-        currentChapter: _currentChapter,
+        currentChapter: _currentChapter.toString(),
         frontLayer: HomePage(
           bookId: _currentBook.bookId,
           damId: _currentBook.damId,
-          chapterId: _currentChapter,
+          chapterId: _currentChapter.toString(),
+          onPressNext: _goToNextChapter,
         ),
         backLayer: ChapterSelectMenu(
           currentBook: _currentBook,

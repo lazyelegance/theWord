@@ -23,8 +23,7 @@ class Book {
 
   bool isValidChapter(int chapterNumber) => chapterNumber <= numberOfChapters;
 
-  String getRandomChapter() =>
-      (new Random().nextInt(numberOfChapters) + 1).toString();
+  int getRandomChapter() => (new Random().nextInt(numberOfChapters) + 1);
 
   factory Book.fromJson(json) {
     print('number_of_chapters');

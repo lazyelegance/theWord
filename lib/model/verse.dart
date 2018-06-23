@@ -30,14 +30,20 @@ class Verse {
   final bool special;
 
   factory Verse.fromJson(Map<String, dynamic> json) {
+    bool isSpecial(Map<String, dynamic> json) {
+      return (json['book_name'] == 'Ezra' &&
+          json['chapter_id'] == '7' &&
+          json['verse_id'] == '21');
+    }
+
     return new Verse(
-      bookName: json['book_name'],
-      bookId: json['book_id'],
-      bookOrder: json['book_order'],
-      chapterId: json['chapter_id'],
-      chapterTitle: json['chapter_title'],
-      verseId: json['verse_id'],
-      verseText: json['verse_text'],
-    );
+        bookName: json['book_name'],
+        bookId: json['book_id'],
+        bookOrder: json['book_order'],
+        chapterId: json['chapter_id'],
+        chapterTitle: json['chapter_title'],
+        verseId: json['verse_id'],
+        verseText: json['verse_text'],
+        special: isSpecial(json));
   }
 }

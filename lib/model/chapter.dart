@@ -22,10 +22,14 @@ class Chapter {
   final String bookOrder;
   final String chapterId;
   final String chapterTitle;
-  final List verses;
+  final List<Verse> verses;
+
+  List<Verse> getVerses() {
+    return verses;
+  }
 
   factory Chapter.fromJson(json) {
-    var verses = [];
+    var verses = <Verse>[];
     var first = json[0];
     for (var verse in json) {
       final newVerse = new Verse.fromJson(verse);

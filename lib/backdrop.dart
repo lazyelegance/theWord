@@ -112,8 +112,7 @@ class _BackdropState extends State<Backdrop>
       title: _BackdropTitle(
         listenable: _controller.view,
         onPress: _toggleBackdropLayerVisibility,
-        frontTitle:
-            Text('${widget.currentBook.bookName} ${widget.currentChapter}'),
+        frontTitle: widget.frontTitle,
         backTitle: widget.backTitle,
       ),
       // TODO: More actions
@@ -121,44 +120,6 @@ class _BackdropState extends State<Backdrop>
     return Scaffold(
       appBar: appBar,
       body: LayoutBuilder(builder: _buildStack),
-    );
-  }
-}
-
-class _FrontLayer extends StatelessWidget {
-  const _FrontLayer({
-    Key key,
-    this.child,
-    this.onTap,
-  }) : super(key: key);
-
-  final Widget child;
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      elevation: 16.0,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(topLeft: Radius.circular(20.0)),
-      ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          GestureDetector(
-            behavior: HitTestBehavior.opaque,
-            onTap: onTap,
-            child: Container(
-              color: kSurfaceDark,
-              width: 48.0,
-              alignment: AlignmentDirectional.centerStart,
-            ),
-          ),
-          Expanded(
-            child: child,
-          ),
-        ],
-      ),
     );
   }
 }

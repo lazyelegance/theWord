@@ -18,9 +18,6 @@ class ChapterView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("object");
-    print(chapterId);
-
     return new Center(
       child: new FutureBuilder<Chapter>(
         future: fetchChapter(bookId, damId, chapterId),

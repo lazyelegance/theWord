@@ -6,6 +6,7 @@ import 'indexmenu.dart';
 import 'welcome.dart';
 import 'colors.dart';
 import 'model/book.dart';
+import 'fixtures/bookdata.dart';
 
 class TheWordApp extends StatefulWidget {
   // This widget is the root of your application.
@@ -51,6 +52,11 @@ class TheWordAppState extends State<TheWordApp> {
       setState(() {
         _currentChapter = _currentChapter + 1;
       });
+    } else {
+      setState(() {
+        _currentBook = getNextBook(_currentBook.bookOrder);
+        _currentChapter = 1;
+      });
     }
   }
 
@@ -71,7 +77,8 @@ class TheWordAppState extends State<TheWordApp> {
           currentBook: _currentBook,
           onBookTap: _onBookTap,
         ),
-        frontTitle: Text('FRONT'),
+        frontTitle:
+            Text('${_currentBook.bookName} ${_currentChapter.toString()}'),
         backTitle: Text('Books'),
         onPressNext: _goToNextChapter,
       ),

@@ -3,6 +3,7 @@ import 'package:meta/meta.dart';
 
 import 'colors.dart';
 import 'model/book.dart';
+import 'frontlayer.dart';
 
 const double _kFlingVelocity = 2.0;
 
@@ -13,15 +14,17 @@ class Backdrop extends StatefulWidget {
   final Widget backLayer;
   final Widget frontTitle;
   final Widget backTitle;
+  final VoidCallback onPressNext;
 
-  const Backdrop({
-    @required this.currentBook,
-    @required this.currentChapter,
-    @required this.frontLayer,
-    @required this.backLayer,
-    @required this.frontTitle,
-    @required this.backTitle,
-  })  : assert(currentBook != null),
+  const Backdrop(
+      {@required this.currentBook,
+      @required this.currentChapter,
+      @required this.frontLayer,
+      @required this.backLayer,
+      @required this.frontTitle,
+      @required this.backTitle,
+      this.onPressNext})
+      : assert(currentBook != null),
         assert(currentChapter != null),
         assert(frontLayer != null),
         assert(backLayer != null),
@@ -77,8 +80,11 @@ class _BackdropState extends State<Backdrop>
         widget.backLayer,
         PositionedTransition(
           rect: layerAnimation,
-          child: _FrontLayer(
-              onTap: _toggleBackdropLayerVisibility, child: widget.frontLayer),
+          child: FrontLayer(
+            onTap: _toggleBackdropLayerVisibility,
+            child: widget.frontLayer,
+            onPressNext: widget.onPressNext,
+          ),
         ),
       ],
     );

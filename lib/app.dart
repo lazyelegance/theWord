@@ -6,7 +6,6 @@ import 'indexmenu.dart';
 import 'welcome.dart';
 import 'colors.dart';
 import 'model/book.dart';
-import 'dart:math';
 
 class TheWordApp extends StatefulWidget {
   // This widget is the root of your application.
@@ -67,7 +66,6 @@ class TheWordAppState extends State<TheWordApp> {
           bookId: _currentBook.bookId,
           damId: _currentBook.damId,
           chapterId: _currentChapter.toString(),
-          onPressNext: _goToNextChapter,
         ),
         backLayer: ChapterSelectMenu(
           currentBook: _currentBook,
@@ -75,6 +73,7 @@ class TheWordAppState extends State<TheWordApp> {
         ),
         frontTitle: Text('FRONT'),
         backTitle: Text('Books'),
+        onPressNext: _goToNextChapter,
       ),
       initialRoute: '/welcome',
       onGenerateRoute: widget._getRoute,

@@ -64,11 +64,10 @@ class _BackdropState extends State<Backdrop>
   Widget _buildStack(BuildContext context, BoxConstraints constraints) {
     const double layerTitleHeight = 50.0;
     final Size layerSize = constraints.biggest;
-    final double layerTop = layerSize.height - layerTitleHeight;
+    final double layerLeft = layerSize.width - layerTitleHeight;
 
     Animation<RelativeRect> layerAnimation = RelativeRectTween(
-      begin: RelativeRect.fromLTRB(
-          0.0, layerTop, 0.0, layerTop - layerSize.height),
+      begin: RelativeRect.fromLTRB(layerLeft, 0.0, -layerLeft, 0.0),
       end: RelativeRect.fromLTRB(0.0, 0.0, 0.0, 0.0),
     ).animate(_controller.view);
 
@@ -135,8 +134,7 @@ class _FrontLayer extends StatelessWidget {
     return Material(
       elevation: 16.0,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(20.0), topRight: Radius.circular(20.0)),
+        borderRadius: BorderRadius.only(topLeft: Radius.circular(20.0)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,

@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'dart:math';
 
 class Book {
   const Book({
@@ -18,7 +19,16 @@ class Book {
   final int bookOrder;
   final int numberOfChapters;
 
+  String getBookName() => bookName;
+
+  bool isValidChapter(int chapterNumber) => chapterNumber <= numberOfChapters;
+
+  String getRandomChapter() =>
+      (new Random().nextInt(numberOfChapters) + 1).toString();
+
   factory Book.fromJson(json) {
+    print('number_of_chapters');
+    print(json['number_of_chapters']);
     return new Book(
         damId: json['dam_id'],
         bookId: json['book_id'],

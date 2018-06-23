@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'backdrop.dart';
 import 'home.dart';
+import 'indexmenu.dart';
 import 'welcome.dart';
 import 'colors.dart';
-import 'model/chapter.dart';
-import 'model/verse.dart';
+import 'model/book.dart';
+import 'dart:math';
 
 class TheWordApp extends StatefulWidget {
   // This widget is the root of your application.
@@ -28,14 +29,21 @@ class TheWordApp extends StatefulWidget {
 }
 
 class TheWordAppState extends State<TheWordApp> {
-  // FIXME: generate default
-  var defaultChapter = Chapter(
+  Book _currentBook = Book(
+      damId: "ENGKJVO",
       bookId: "Ezra",
       bookName: "Ezra",
-      bookOrder: "15",
-      chapterId: "7",
-      chapterTitle: "Chapter 7",
-      verses: <Verse>[]);
+      bookOrder: 15,
+      numberOfChapters: 10);
+
+  String _currentChapter = "7";
+
+  void _onBookTap(Book book) {
+    setState(() {
+      _currentBook = book;
+      _currentChapter = book.getRandomChapter();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,13 +51,19 @@ class TheWordAppState extends State<TheWordApp> {
       debugShowCheckedModeBanner: false,
       title: 'The Word',
       home: Backdrop(
-        currentChapter: defaultChapter,
-        frontLayer: HomePage(),
-        backLayer: Container(
-          color: kPrimaryColor,
+        currentBook: _currentBook,
+        currentChapter: _currentChapter,
+        frontLayer: HomePage(
+          bookId: _currentBook.bookId,
+          damId: _currentBook.damId,
+          chapterId: _currentChapter,
+        ),
+        backLayer: ChapterSelectMenu(
+          currentBook: _currentBook,
+          onBookTap: _onBookTap,
         ),
         frontTitle: Text('FRONT'),
-        backTitle: Text('MENU'),
+        backTitle: Text('Books'),
       ),
       initialRoute: '/welcome',
       onGenerateRoute: widget._getRoute,
@@ -87,6 +101,10 @@ TextTheme _buildTheWordTextTheme(TextTheme base) {
         caption: base.caption.copyWith(
           fontWeight: FontWeight.w400,
           fontSize: 14.0,
+        ),
+        body2: base.body2.copyWith(
+          fontWeight: FontWeight.w500,
+          fontSize: 16.0,
         ),
       )
       .apply(

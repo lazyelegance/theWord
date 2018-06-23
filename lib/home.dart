@@ -3,15 +3,17 @@ import 'package:flutter/material.dart';
 import 'chapterview.dart';
 
 class HomePage extends StatelessWidget {
-  final String chapter;
-  final String book;
+  final String bookId;
+  final String chapterId;
+  final String damId;
 
-  const HomePage({this.book: 'Ezra', this.chapter: '7'});
+  const HomePage(
+      {this.bookId: 'Ezra', this.damId = "ENGKJVO", this.chapterId: '7'});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: new ChapterView(),
+      body: new ChapterView(bookId: bookId, chapterId: chapterId, damId: damId),
     );
   }
 }

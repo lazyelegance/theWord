@@ -5,21 +5,26 @@ import 'model/verse.dart';
 import 'service/dbt.dart';
 
 class ChapterView extends StatelessWidget {
-  const ChapterView({
-    Key key,
-  }) : super(key: key);
+  final String bookId;
+  final String chapterId;
+  final String damId;
+
+  const ChapterView({Key key, this.bookId, this.damId, this.chapterId})
+      : assert(bookId != null),
+        assert(chapterId != null),
+        assert(damId != null),
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return new Center(
       child: new FutureBuilder<Chapter>(
-        future: fetchChapter('Ezra', '7'),
+        future: fetchChapter(bookId, damId, chapterId),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            print(snapshot.data);
             return Container(
               child: ListView(
-                padding: EdgeInsets.fromLTRB(2.0, 50.0, 2.0, 8.0),
+                padding: EdgeInsets.all(8.0),
                 children: _buildListItems(snapshot.data.verses),
               ),
             );

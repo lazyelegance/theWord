@@ -27,7 +27,7 @@ class ChapterSelectMenu extends StatelessWidget {
     return GestureDetector(
         onTap: () => onBookTap(book),
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 16.0),
+          padding: EdgeInsets.symmetric(vertical: 10.0),
           child: Text(
             bookNameString,
             style: theme.textTheme.body2.copyWith(
@@ -44,7 +44,7 @@ class ChapterSelectMenu extends StatelessWidget {
     List<Book> books = getBooks();
     return Center(
         child: Container(
-      padding: EdgeInsets.only(top: 40.0),
+      padding: EdgeInsets.only(top: 10.0),
       color: kPrimaryColor,
       child: ListView(
         padding: EdgeInsets.all(20.0),

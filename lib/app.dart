@@ -77,8 +77,19 @@ class TheWordAppState extends State<TheWordApp> {
           currentBook: _currentBook,
           onBookTap: _onBookTap,
         ),
-        frontTitle:
-            Text('${_currentBook.bookName} ${_currentChapter.toString()}'),
+        frontTitle: RichText(
+          text: TextSpan(
+            children: <TextSpan>[
+              TextSpan(
+                  text: '${_currentBook.bookName}',
+                  style: _kTheWordTheme.primaryTextTheme.headline),
+              TextSpan(text: ' '),
+              TextSpan(
+                  text: 'Chapter ${_currentChapter.toString()}',
+                  style: _kTheWordTheme.primaryTextTheme.caption),
+            ],
+          ),
+        ),
         backTitle: Text('Books'),
         onPressNext: _goToNextChapter,
       ),
@@ -111,10 +122,9 @@ ThemeData _buildTheWordTheme() {
 TextTheme _buildTheWordTextTheme(TextTheme base) {
   return base
       .copyWith(
-        headline: base.headline.copyWith(
-          fontWeight: FontWeight.w500,
-        ),
-        title: base.title.copyWith(fontSize: 18.0),
+        headline:
+            base.headline.copyWith(fontWeight: FontWeight.w500, fontSize: 16.0),
+        title: base.title.copyWith(fontSize: 16.0),
         caption: base.caption.copyWith(
           fontWeight: FontWeight.w400,
           fontSize: 14.0,

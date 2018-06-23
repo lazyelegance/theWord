@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
-import 'colors.dart';
 import 'model/book.dart';
 import 'frontlayer.dart';
 
@@ -93,7 +92,7 @@ class _BackdropState extends State<Backdrop>
   @override
   void didUpdateWidget(Backdrop oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (widget.currentBook != oldWidget.currentBook) {
+    if (widget.currentBook != oldWidget.currentBook && !_frontLayerVisible) {
       _toggleBackdropLayerVisibility();
     } else if (!_frontLayerVisible) {
       _controller.fling(velocity: _kFlingVelocity);

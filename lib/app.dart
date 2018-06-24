@@ -46,7 +46,6 @@ class TheWordAppState extends State<TheWordApp> {
   }
 
   void _onChapterTap(int chapter) {
-    print(chapter);
     setState(() {
       _currentChapter = chapter;
     });

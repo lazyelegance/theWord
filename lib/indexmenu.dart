@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
 import 'colors.dart';
-import 'model/chapter.dart';
 import 'model/book.dart';
 import 'fixtures/bookdata.dart';
 

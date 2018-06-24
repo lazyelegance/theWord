@@ -14,9 +14,16 @@ Book getNextBook(int bookOrder) {
 
 int getMaxBookOrder(List<Book> books) {
   var thisarray = books.map((book) => book.bookOrder);
-  print(thisarray);
   return thisarray.reduce(max);
 }
+
+Book getBookForWelcome() {
+  var books = getBooks();
+  var randomChapter = new Random().nextInt(books.length);
+  return books[randomChapter];
+}
+
+// int getRandomChapter() => (new Random().nextInt(numberOfChapters) + 1);
 
 const allBooks = <Book>[
   Book(

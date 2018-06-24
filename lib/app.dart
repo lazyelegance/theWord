@@ -45,6 +45,13 @@ class TheWordAppState extends State<TheWordApp> {
     });
   }
 
+  void _onChapterTap(int chapter) {
+    print(chapter);
+    setState(() {
+      _currentChapter = chapter;
+    });
+  }
+
   void _goToNextChapter() {
     var nextChapterExists = _currentBook.isValidChapter(_currentChapter + 1);
 
@@ -75,7 +82,9 @@ class TheWordAppState extends State<TheWordApp> {
         ),
         backLayer: ChapterSelectMenu(
           currentBook: _currentBook,
+          currentChapter: _currentChapter,
           onBookTap: _onBookTap,
+          onChapterTap: _onChapterTap,
         ),
         frontTitle: RichText(
           text: TextSpan(

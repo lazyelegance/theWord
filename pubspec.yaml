@@ -47,7 +47,11 @@ flutter:
       fonts:
         - asset: fonts/Rubik-Regular.ttf
         - asset: fonts/Rubik-Medium.ttf
-          weight: 500
+          weight: 500 
+    - family: Cinzel
+      fonts:
+        - asset: fonts/Cinzel-Regular.ttf
+
     # - family: Schyler
     #   fonts:
     #     - asset: fonts/Schyler-Regular.ttf

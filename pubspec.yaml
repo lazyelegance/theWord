@@ -4,10 +4,12 @@ description: Bible mobile application built with Flutter
 dependencies:
   flutter:
     sdk: flutter
+  shared_preferences: "^0.4.2"
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
+
 
 dev_dependencies:
   flutter_test:

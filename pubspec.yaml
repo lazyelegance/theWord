@@ -4,24 +4,22 @@ description: Bible mobile application built with Flutter
 dependencies:
   flutter:
     sdk: flutter
-  shared_preferences: "^0.4.2"
+  http: ^0.12.0+2
+  shared_preferences: '^0.4.2'
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
 
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
 
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec
 
 # The following section is specific to Flutter.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -49,11 +47,10 @@ flutter:
       fonts:
         - asset: fonts/Rubik-Regular.ttf
         - asset: fonts/Rubik-Medium.ttf
-          weight: 500 
+          weight: 500
     - family: Cinzel
       fonts:
         - asset: fonts/Cinzel-Regular.ttf
-
     # - family: Schyler
     #   fonts:
     #     - asset: fonts/Schyler-Regular.ttf
